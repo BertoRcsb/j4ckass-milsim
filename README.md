@@ -32,6 +32,16 @@ J4CKASS-MILSIM/
 └── .gitignore
 ```
 
+## Prototipo HTML
+
+A primeira pagina estatica esta em:
+
+```text
+prototype/index.html
+```
+
+Ela pode ser aberta diretamente no navegador e usa assets locais em `prototype/assets`.
+
 ## Documentacao
 
 - [Visao geral](docs/visao-geral.md)
