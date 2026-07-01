@@ -1,10 +1,33 @@
+# Build
 bin/
 obj/
+
+# IDE
 .vs/
 .vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Local database
+*.db
+*.db-shm
+*.db-wal
+
+# Secrets and local config
+.env
+appsettings.Development.json
+secrets.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# User-specific files
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
-*.db
 *.bak
