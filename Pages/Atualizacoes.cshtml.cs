@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GrupoArmaReforger.Pages
+namespace GrupoArmaReforger.Pages;
+
+/// <summary>
+/// PageModel para página de Atualizações
+/// </summary>
+public class AtualizacoesModel : PageModel
 {
-    public class AtualizacoesModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }
