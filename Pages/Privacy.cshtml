@@ -1,8 +1,23 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Admin";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<section class="page-hero page-hero-admin">
+    <div class="app-container">
+        <p class="eyebrow">Area administrativa</p>
+        <h1 class="page-title">Admin</h1>
+        <p>O painel administrativo ainda esta reservado para a proxima etapa: login protegido, CRUD de avisos e CRUD de atualizacoes.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="app-container">
+        <article class="content-card">
+            <span class="meta-label">Status</span>
+            <h2>Preparado para evolucao</h2>
+            <p>As paginas publicas ja existem. A etapa seguinte deve adicionar autenticacao, migrations SQLite e gerenciamento de conteudo.</p>
+        </article>
+    </div>
+</section>

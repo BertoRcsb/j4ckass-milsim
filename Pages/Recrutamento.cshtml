@@ -1,26 +1,71 @@
 ﻿@page
-@model MyApp.Namespace.RecrutamentoModel
-    &lt;<h1>Recrutamento para o Grupo "J4CKASS"</h1>&lt;
-    <form method="post">
-        <input type="text" name="Nome" placeholder="Seu nome " required />
-        <br><br>
-        <input type="email" name="Email" placeholder="Seu email " required />
-        <br><br>
-        <input type="text" name="SteamID" placeholder="Sua Steam ID " required />
-        <br><br>
-        <input type="text" name="PSN" placeholder="Seu PSN" required />
-        <br><br>
-        <button type="submit">Entrar no grupo</button>
-    </form>
-    @if (!string.IsNullOrEmpty(Model.Nome))
-    {
-        <p>Recruta recebido: @Model.Nome</p>
-    }
-    <h2> Lista de Recrutas</h2>
-    <ul>
-        @foreach (var recruta in MyApp.Namespace.RecrutamentoModel.Recrutas)
+@model RecrutamentoModel
+@{
+    ViewData["Title"] = "Recrutamento";
+}
+
+<section class="page-hero page-hero-recruitment">
+    <div class="app-container">
+        <p class="eyebrow">Alistamento</p>
+        <h1 class="page-title">Recrutamento</h1>
+        <p>Entre para a linha de frente do J4CKASS MILSIM. Informe seus dados e a staff chama você para o alinhamento inicial.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="app-container">
+        @if (Model.Resultado != null)
         {
-            <li>@recruta.Nome - @recruta.Email</li>
+            <div class="form-panel mb-4" role="status">
+                @if (Model.Resultado.Sucesso)
+                {
+                    <div class="alert alert-success">
+                        <strong>✓ Sucesso!</strong><br>
+                        @Model.Resultado.Mensagem
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <strong>✗ Erro</strong><br>
+                        @Model.Resultado.Mensagem
+                    </div>
+                }
+            </div>
         }
-    </ul>
-    <a href="/Index">Voltar para a página inicial</a>
+
+        <article class="content-card form-panel">
+            <h2>Formulário de Recrutamento</h2>
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Nome">Nome completo *</label>
+                    <input class="form-control" asp-for="Nome" autocomplete="name" placeholder="Seu nome ou nickname" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Email">Email *</label>
+                    <input class="form-control" type="email" asp-for="Email" autocomplete="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="SteamID">Steam ID</label>
+                    <input class="form-control" asp-for="SteamID" placeholder="Seu Steam ID">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" asp-for="PSN">PSN ou plataforma</label>
+                    <input class="form-control" asp-for="PSN" placeholder="Seu PSN ou plataforma">
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit">Enviar recrutamento</button>
+            </form>
+            <p class="form-helper mt-3"><small>* Campos obrigatórios. Ao menos Steam ID ou PSN deve ser preenchido.</small></p>
+        </article>
+
+        <article class="content-card mt-4">
+            <h3>Próximos passos</h3>
+            <ol>
+                <li>Complete o formulário acima</li>
+                <li>Aguarde contato da staff no Discord</li>
+                <li>Participe de um alinhamento inicial com a liderança</li>
+                <li>Acesse o Discord e prepare-se para as operações!</li>
+            </ol>
+        </article>
+    </div>
+</section>

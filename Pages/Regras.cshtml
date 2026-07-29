@@ -1,0 +1,75 @@
+@page
+@model RegrasModel
+@{
+    ViewData["Title"] = "Regras";
+}
+
+<section class="page-hero page-hero-rules">
+    <div class="app-container">
+        <p class="eyebrow">Código de conduta</p>
+        <h1 class="page-title">Regras do Grupo</h1>
+        <p>Orientações que garantem diversão, respeito e qualidade nas operações do J4CKASS MILSIM.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="rules-container">
+            <article class="rule-card">
+                <span class="rule-number">01</span>
+                <h2>Respeito mútuo</h2>
+                <p>Tolerância zero para preconceito, assédio ou desrespeito. Todos os membros são bem-vindos independente de origem, gênero ou identidade. O grupo é espaço seguro para jogar e se divertir.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">02</span>
+                <h2>Compromisso com a operação</h2>
+                <p>Se confirmou presença, honre o compromisso. Aviso com antecedência é sempre bem-vindo. Não aparecer sem aviso prejudica a experiência do grupo inteiro.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">03</span>
+                <h2>Comunicação clara no rádio</h2>
+                <p>Mensagens objetivas, sem spam. Nomes de personagem identificáveis. Evite interferências desnecessárias. A comunicação tática é essencial para o sucesso da operação.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">04</span>
+                <h2>Equipamento e preparação</h2>
+                <p>Microfone de qualidade aceitável obrigatório. Conhecimento básico da missão antes de começar. Ter comunicação clara é tão importante quanto mira boa.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">05</span>
+                <h2>Discord em dia</h2>
+                <p>Mantenha seu perfil atualizado com informações de contato. Notificações ativas para não perder avisos de operações. É o principal canal de comunicação do grupo.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">06</span>
+                <h2>Diversão em primeiro lugar</h2>
+                <p>Levamos a tática a sério, mas a comunidade existe porque é divertido. Jokes, banter e momentos leves são bem-vindos. Sem stress, sem ego, sem dramatização.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">07</span>
+                <h2>Respeito ao líder de operação</h2>
+                <p>Durante a missão, siga as instruções do comandante. Sugestões são bem-vindas antes ou depois, durante execução segue o plano. Confiança é a base da coordenação.</p>
+            </article>
+
+            <article class="rule-card">
+                <span class="rule-number">08</span>
+                <h2>Sem hackeadores ou trapaceiros</h2>
+                <p>Jogo limpo sempre. Detecção de cheating resulta em ban permanente do grupo. Respeitamos o jogo e o esforço de todos.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-light">
+    <div class="app-container">
+        <h2 class="section-title">Dúvidas sobre as regras?</h2>
+        <p>Entre em contato com os moderadores no Discord. Estamos aqui para ajudar e garantir que todos se divirtam.</p>
+        <a class="btn btn-primary mt-4" href="@Model.DiscordUrl" target="_blank" rel="noopener">Ir ao Discord</a>
+    </div>
+</section>

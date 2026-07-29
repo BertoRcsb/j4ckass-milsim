@@ -1,45 +1,47 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-namespace MyApp.Namespace
+using GrupoArmaReforger.Core.Interfaces;
+using GrupoArmaReforger.Application.DTOs;
+
+namespace GrupoArmaReforger.Pages;
+
+public class RecrutamentoModel : PageModel
 {
-    public class RecrutamentoModel : PageModel
-    {
-        // Lista que salva os os dados dos recrutas (fica na memória sempre)
-        public static List<Operador> Recrutas = new List<Operador>();
-        [BindProperty]
-        public string? Nome { get; set; }
-        [BindProperty]
-        public string? Email { get; set; }
-        [BindProperty]
-        public string? SteamID { get; set; }
-        [BindProperty]
-        public string? PSN { get; set; }
-        public void OnGet()
-        {
-        }
-        public void OnPost()
-        {
-            // Criar novo recruta com os dados do formulário
-            Operador  novo =  new Operador
-            {
-                Nome = Nome,
-                Email = Email,
-                SteamID = SteamID,
-                PSN = PSN
-            };
-            //salvar na lista de recrutas
-            Recrutas.Add(novo);
-            // Aqui você pode processar os dados do formulário
-            // Nome, Email, SteamID e PSN já estarão preenchidos
-        }
-    }
-}
-// Classe do operador (modelo)
-public class Operador
-{
+    private readonly IRecrutamentoService _recrutamentoService;
+
+    [BindProperty]
     public string? Nome { get; set; }
+
+    [BindProperty]
     public string? Email { get; set; }
+
+    [BindProperty]
     public string? SteamID { get; set; }
+
+    [BindProperty]
     public string? PSN { get; set; }
+
+    public RecrutamentoResultadoDTO? Resultado { get; private set; }
+
+    public RecrutamentoModel(IRecrutamentoService recrutamentoService)
+    {
+        _recrutamentoService = recrutamentoService;
+    }
+
+    public void OnGet()
+    {
+    }
+
+    public async Task OnPostAsync()
+    {
+        var recrutamento = new RecrutamentoDTO
+        {
+            Nome = Nome ?? string.Empty,
+            Email = Email ?? string.Empty,
+            SteamID = SteamID,
+            PSN = PSN
+        };
+
+        Resultado = await _recrutamentoService.CadastrarRecrutaAsync(recrutamento);
+    }
 }

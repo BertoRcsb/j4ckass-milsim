@@ -1,0 +1,25 @@
+Coloque a logo oficial do J4CKASS neste diretorio e substitua o arquivo:
+
+logo-j4ckass.SVG
+
+Formatos recomendados:
+- SVG, se a logo for vetorial.
+- PNG com fundo transparente, se a logo vier como imagem.
+
+Se usar PNG, mantenha o nome:
+
+logo-j4ckass.png
+
+Depois atualize as duas referencias em:
+
+Pages/Shared/_Layout.cshtml
+Pages/Index.cshtml
+
+de:
+
+~/assets/logos/logo-j4ckass.svg
+
+para:
+
+~/assets/logos/logo-j4ckass.png
+<img src="..." alt="Logo J4CKASS MILSIM" width="44" height="44"><img src="..." alt="Logo J4CKASS MILSIM" width="44" height="44">

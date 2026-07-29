@@ -1,0 +1,19 @@
+Coloque imagens JPG/WebP neste diretorio com estes nomes:
+
+hero-soldiers.jpg
+rules-soldiers.jpg
+notices-soldiers.jpg
+updates-soldiers.jpg
+recruitment-soldiers.jpg
+about-soldiers.jpg
+admin-soldiers.jpg
+
+Tamanho recomendado:
+- 1920x1080 ou maior.
+- Paisagem.
+- Soldados bem equipados no lado direito ou central.
+- Deixe area mais limpa no lado esquerdo para o texto.
+- Evite texto escrito dentro da imagem.
+- Evite imagem muito clara; o site usa overlay escuro por cima.
+
+Se algum arquivo nao existir, o site continua usando o fundo tatico atual como fallback.

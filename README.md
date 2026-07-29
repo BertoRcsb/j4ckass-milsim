@@ -1,92 +1,260 @@
-# J4CKASS MILSIM
+# J4CKASS MILSIM - Portal da Comunidade
 
-Portal oficial da comunidade J4CKASS MILSIM.
+Portal web para a comunidade **J4CKASS MILSIM**, um grupo brasileiro de [Arma Reforger](https://www.armaresourcelocator.com/reforger/). O site centraliza regras, avisos, atualizações e recrutamento.
 
-Slogan:
+## 🎯 Slogan
 
-> MUITA PROSA, POUCA MIRA
+> **"MUITA PROSA, POUCA MIRA"**
 
-Este projeto sera uma aplicacao web leve, gratuita para execucao local ou hospedagem de baixo custo, feita em ASP.NET Core MVC com .NET 8.
+Operações organizadas, amizade no rádio e presença tática no Arma Reforger.
 
-## Objetivo
+## 🚀 Stack Tecnológico
 
-Criar uma base de aprendizado e evolucao para:
+- **Framework**: ASP.NET Core 9.0 (Razor Pages)
+- **Banco de Dados**: SQLite + Entity Framework Core
+- **Frontend**: Bootstrap 5 + CSS3
+- **Padrão Arquitetural**: Clean Architecture
+- **Linguagem**: C# 12
 
-- C#
-- ASP.NET Core
-- Banco de dados
-- Seguranca
-- Arquitetura Limpa
-- DevOps
-- Docker
-- CI/CD
+## 📁 Estrutura do Projeto
 
-## Estrutura inicial
-
-```text
-J4CKASS-MILSIM/
-├── docs/
-├── src/
-├── tests/
-├── README.md
-└── .gitignore
+```
+GrupoArmaReforger/
+├── Core/                          # Domain Layer
+│   ├── Domain/
+│   │   └── Operador.cs           # Entidade
+│   └── Interfaces/
+│       ├── IOperadorRepository.cs
+│       ├── IRecrutamentoService.cs
+│       └── IAssetService.cs
+│
+├── Application/                   # Application Layer
+│   ├── DTOs/
+│   │   └── RecrutamentoDTO.cs
+│   └── Services/
+│       ├── RecrutamentoService.cs
+│       └── AssetService.cs
+│
+├── Infrastructure/                # Infrastructure Layer
+│   ├── Data/
+│   │   └── AppDbContext.cs
+│   └── Repositories/
+│       └── OperadorRepository.cs
+│
+├── Pages/                         # Presentation Layer
+│   ├── Index.cshtml              # Home
+│   ├── Regras.cshtml             # 8 regras
+│   ├── Avisos.cshtml             # Comunicados
+│   ├── Atualizacoes.cshtml       # Roadmap
+│   ├── Recrutamento.cshtml       # Formulário
+│   └── Shared/
+│       └── _Layout.cshtml
+│
+├── wwwroot/assets/
+│   ├── logos/                    # j4novo.png, jckss.png, logo-j4.png
+│   └── wallpapers/               # operations-hero.jpg, tactical-hero.jpg
+│
+├── Program.cs                    # Configuração DI & Startup
+├── ARCHITECTURE.md               # Clean Architecture
+├── CLEAN_CODE_PRACTICES.md       # Boas práticas
+├── ASSETS_GUIDE.md               # Guia de imagens
+└── README.md                     # Este arquivo
 ```
 
-## Prototipo HTML
+## 🏗️ Arquitetura Clean
 
-A primeira pagina estatica esta em:
+Implementação de **Clean Architecture** com 4 camadas:
 
-```text
-prototype/index.html
-```
+### Camadas
 
-Ela pode ser aberta diretamente no navegador e usa assets locais em `prototype/assets`.
+| Camada | Responsabilidade | Exemplo |
+|--------|-----------------|---------|
+| **Core** | Domínio e interfaces | `Operador`, `IRecrutamentoService` |
+| **Application** | Serviços e orquestração | `RecrutamentoService`, DTOs |
+| **Infrastructure** | Persistência e recursos | `OperadorRepository`, `AppDbContext` |
+| **Presentation** | Interface web | `RecrutamentoModel`, Views |
 
-## Documentacao
+### Benefícios
 
-- [Visao geral](docs/visao-geral.md)
-- [Requisitos](docs/requisitos.md)
-- [Arquitetura](docs/arquitetura.md)
-- [Seguranca](docs/seguranca.md)
-- [Backlog](docs/backlog.md)
+✅ Código testável e desacoplado
+✅ Fácil manutenção e escalabilidade
+✅ Reutilização de serviços
+✅ Independência de frameworks
 
-## Como executar futuramente
+## 🔧 Execução
 
-Quando o projeto ASP.NET Core for criado:
+### Pré-requisitos
+
+- .NET 9.0 SDK
+- Visual Studio 2022 / VS Code
+
+### Instalação & Execução
 
 ```bash
+# Clone
+git clone https://github.com/seu-usuario/J4CKASS-MILSIM.git
+cd J4CKASS-MILSIM
+
+# Build
 dotnet restore
-dotnet run --project src/J4ckassMilsim.Web
+dotnet build
+
+# Executar
+dotnet run
+
+# Acesse: https://localhost:5144
 ```
 
-## Configuracao do administrador
+## 📋 Páginas Implementadas
 
-As credenciais administrativas nao devem ficar no codigo.
+| Página | Descrição |
+|--------|-----------|
+| **Home** | Hero section com chamada para ação |
+| **Regras** | 8 regras de conduta da comunidade |
+| **Avisos** | Comunicados e eventos importantes |
+| **Atualizações** | Roadmap com versões planejadas |
+| **Recrutamento** | Formulário com validação |
+| **Sobre** | Informações do grupo |
 
-Em desenvolvimento, usar User Secrets.
+## ✨ Funcionalidades
 
-Em producao, usar variaveis de ambiente.
+### ✅ Pronto
 
-Exemplo:
+- Páginas estáticas com design responsivo
+- Formulário de recrutamento com validação
+- Persistência em SQLite
+- Injeção de dependência
+- Clean Architecture implementada
+- Clean Code principles aplicados
+- Sistema de assets/imagens
 
-```text
-ADMIN_USERNAME
-ADMIN_PASSWORD
+### 📌 Planejado
+
+- [ ] Painel administrativo (CMS)
+- [ ] Autenticação e autorização
+- [ ] CRUD dinâmico de avisos
+- [ ] Integração com Discord
+- [ ] Dark mode
+- [ ] Galeria de operações
+- [ ] Sistema de AAR (After Action Reports)
+
+## 📚 Documentação
+
+### Arquivos Principais
+
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Clean Architecture explicada
+- **[CLEAN_CODE_PRACTICES.md](./CLEAN_CODE_PRACTICES.md)** - Práticas de código com exemplos
+- **[ASSETS_GUIDE.md](./ASSETS_GUIDE.md)** - Organização de imagens
+
+## 🎨 Design
+
+- **Framework CSS**: Bootstrap 5
+- **Responsivo**: Mobile-first
+- **Accessibility**: Alt text, semantic HTML
+- **Performance**: Lazy loading de imagens
+
+## 🧪 Testes (Preparado para)
+
+Estrutura pronta para testes unitários com Moq:
+
+```csharp
+[TestClass]
+public class RecrutamentoServiceTests
+{
+    [TestMethod]
+    public async Task CadastrarRecrutaAsync_ComDadosValidos_RetornaSucesso()
+    {
+        var mockRepo = new Mock<IOperadorRepository>();
+        var service = new RecrutamentoService(mockRepo.Object, null);
+        var resultado = await service.CadastrarRecrutaAsync(dto);
+        Assert.IsTrue(resultado.Sucesso);
+    }
+}
 ```
 
-## Publicacao
+## 🔐 Segurança
 
-O projeto deve ser publicado inicialmente de forma simples e barata, mantendo:
+### Implementado
+
+✅ HTTPS redirect
+✅ HSTS headers
+✅ Entity validation
+✅ SQL parameter binding (EF Core)
+✅ Sem secrets no repositório
+
+### Planejado
+
+- [ ] Authentication & Authorization
+- [ ] CSRF protection
+- [ ] Rate limiting
+- [ ] Input sanitization
+
+## 🚀 Deploy
+
+### Publicar
+
+```bash
+dotnet publish -c Release -o ./publish
+```
+
+### Requisitos em Produção
 
 - HTTPS ativo
-- banco SQLite com backup
-- logs sem dados sensiveis
-- secrets fora do repositorio
+- SQLite com backup
+- Logs sem dados sensíveis
+- Secrets em variáveis de ambiente
 
-## Proximos passos
+## 📖 Clean Code Aplicado
 
-1. Criar a solution .NET.
-2. Criar os projetos Domain, Application, Infrastructure e Web.
-3. Configurar SQLite, Entity Framework Core e Serilog.
-4. Criar as paginas publicas.
-5. Criar o painel administrativo protegido.
+### Nomes Significativos
+```csharp
+CadastrarRecrutaAsync()  // ✅ Claro
+ExisteEmailAsync()       // ✅ Expressivo
+RecrutamentoService      // ✅ Específico
+```
+
+### Funções Pequenas e Focadas
+- PageModels delegam para serviços
+- Serviços delegam para repositórios
+- Cada classe tem uma responsabilidade
+
+### Tratamento de Erros
+```csharp
+operador.Validar();  // Lança exceção se inválido
+// Serviço captura e converte em DTO com mensagem
+```
+
+### DRY (Don't Repeat Yourself)
+- Serviço `IAssetService` centraliza caminhos de imagens
+- Evita duplicação em views
+
+## 👥 Contribuindo
+
+### Branches
+
+```
+main (produção)
+└── develop (desenvolvimento)
+    ├── feature/novo-recurso
+    └── bugfix/correcao
+```
+
+### Commits
+
+```bash
+git commit -m "feat: adicionar validação de email"
+git commit -m "fix: corrigir erro no PageModel"
+git commit -m "refactor: simplificar RecrutamentoService"
+```
+
+## 📞 Suporte
+
+- **Arquitetura**: [ARCHITECTURE.md](./ARCHITECTURE.md)
+- **Clean Code**: [CLEAN_CODE_PRACTICES.md](./CLEAN_CODE_PRACTICES.md)
+- **Assets**: [ASSETS_GUIDE.md](./ASSETS_GUIDE.md)
+
+---
+
+**Status**: 🟢 Em produção
+**Última atualização**: 29 Jul 2026
+**Versão**: 1.0.0

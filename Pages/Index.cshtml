@@ -1,15 +1,44 @@
-﻿@page
+@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">ARMA MILSIM J4CKASS REFORGER</h1>
-    <p>Grupo focado em operações táticas e realismo no Arma Reforger Cross Platform.</p>
-</div>
-<div style="margin-top:20px;">
-    <a href="/Recrutamento">Entra para o grupo</a>
-    <br><br>
-<a href="/Sobre">Sobre o grupo</a>     
-    
+<section class="hero hero-home" style="background-image: url('@Model.HeroBackgroundUrl'); background-size: cover; background-position: center;">
+    <div class="hero-overlay"></div>
+    <div class="app-container hero-content">
+        <div class="hero-copy">
+            <img class="hero-logo" src="@Model.LogoUrl" alt="Logo J4CKASS MILSIM" loading="lazy">
+            <p class="eyebrow">Comunidade brasileira de Arma Reforger</p>
+            <h1>J4CKASS MILSIM</h1>
+            <p class="slogan">"MUITA PROSA, POUCA MIRA"</p>
+            <p class="hero-description">
+                Operações organizadas, amizade no rádio e presença tática no Arma Reforger. O portal centraliza regras, avisos, recrutamento e atualizações do grupo.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="@Model.DiscordUrl" target="_blank" rel="noopener">Entrar no Discord</a>
+                <a class="btn btn-outline-light btn-lg" asp-page="/Regras">Ver Regras</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quick-info">
+    <div class="app-container info-grid">
+        <article class="info-item">
+            <span class="info-label">Operações</span>
+            <strong>Organização tática</strong>
+            <p>Base para comunicados, treinamentos e eventos da comunidade.</p>
+        </article>
+        <article class="info-item">
+            <span class="info-label">Conduta</span>
+            <strong>Regras claras</strong>
+            <p>Espaço para centralizar regras, padrões e orientações do grupo.</p>
+        </article>
+        <article class="info-item">
+            <span class="info-label">Evolução</span>
+            <strong>Portal em crescimento</strong>
+            <p>Projeto preparado para evoluir com banco de dados, admin e publicação simples.</p>
+        </article>
+    </div>
+</section>
