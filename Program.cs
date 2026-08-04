@@ -17,6 +17,24 @@ using GrupoArmaReforger.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Adicionar autenticação com cookies
+builder.Services.AddAuthentication("AdminScheme")
+    .AddCookie("AdminScheme", options =>
+    {
+        options.LoginPath = "/Admin/Login";
+        options.LogoutPath = "/Admin/Logout";
+        options.AccessDeniedPath = "/Admin/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromHours(24);
+        options.SlidingExpiration = true;
+    });
+
+// Adicionar autorização
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireAuthenticatedUser());
+});
+
 // Adicionar serviços de apresentação
 builder.Services.AddRazorPages();
 
@@ -32,6 +50,13 @@ builder.Services.AddLogging();
 
 var app = builder.Build();
 
+// Inicializar banco de dados com dados padrão
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await DbInitializer.InitializeAsync(dbContext);
+}
+
 // Configurar pipeline HTTP
 ConfigureHttpPipeline(app);
 
@@ -44,9 +69,15 @@ static void RegisterApplicationServices(IServiceCollection services)
 {
     // Repositories - Padrão Repository
     services.AddScoped<IOperadorRepository, OperadorRepository>();
+    services.AddScoped<IAdminRepository, AdminRepository>();
+    services.AddScoped<IAvisoRepository, AvisoRepository>();
+    services.AddScoped<IAtualizacaoRepository, AtualizacaoRepository>();
 
     // Application Services - Lógica de negócio
     services.AddScoped<IRecrutamentoService, RecrutamentoService>();
+    services.AddScoped<IAdminService, AdminService>();
+    services.AddScoped<AvisoService>();
+    services.AddScoped<AtualizacaoService>();
 
     // Infrastructure Services - Assets e recursos
     services.AddSingleton<IAssetService, AssetService>();
@@ -67,6 +98,7 @@ static void ConfigureHttpPipeline(WebApplication app)
     // Middleware de segurança e roteamento
     app.UseHttpsRedirection();
     app.UseRouting();
+    app.UseAuthentication();
     app.UseAuthorization();
 
     // Mapear assets estáticos e páginas Razor

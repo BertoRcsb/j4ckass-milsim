@@ -1,0 +1,50 @@
+@page
+@model DashboardModel
+@{
+    ViewData["Title"] = "Dashboard Admin";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">PAINEL DE CONTROLE</h1>
+        <p>Bem-vindo, @User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="content-card">
+                <span class="info-label">Gerenciamento</span>
+                <h3>Avisos</h3>
+                <p>Criar, editar e remover avisos da comunidade</p>
+                <a href="/Admin/Avisos/Index" class="btn btn-primary btn-sm mt-3">Gerenciar Avisos</a>
+            </div>
+
+            <div class="content-card">
+                <span class="info-label">Gerenciamento</span>
+                <h3>Atualizações</h3>
+                <p>Publicar novas versões e atualizações do projeto</p>
+                <a href="/Admin/Atualizacoes/Index" class="btn btn-primary btn-sm mt-3">Gerenciar Atualizações</a>
+            </div>
+
+            <div class="content-card">
+                <span class="info-label">Informações</span>
+                <h3>Avisos Cadastrados</h3>
+                <p class="info-item strong">@Model.TotalAvisos</p>
+                <p>Total de avisos no sistema</p>
+            </div>
+
+            <div class="content-card">
+                <span class="info-label">Informações</span>
+                <h3>Atualizações Cadastradas</h3>
+                <p class="info-item strong">@Model.TotalAtualizacoes</p>
+                <p>Total de atualizações lançadas</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="/Admin/Logout" class="btn btn-outline-light">SAIR</a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+@page
+@model AvisosCreateModel
+@{
+    ViewData["Title"] = "Novo Aviso";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">CRIAR AVISO</h1>
+        <p>Publicar um novo aviso para a comunidade</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="form-panel">
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @Model.SuccessMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @Model.ErrorMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título *</label>
+                    <input type="text" class="form-control @(ModelState["Aviso.Titulo"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                           id="titulo" name="aviso.titulo" required maxlength="200" asp-for="@Model.Aviso.Titulo">
+                    <small class="form-text">Máximo 200 caracteres</small>
+                    <span asp-validation-for="Aviso.Titulo" class="invalid-feedback"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="conteudo" class="form-label">Conteúdo *</label>
+                    <textarea class="form-control @(ModelState["Aviso.Conteudo"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                              id="conteudo" name="aviso.conteudo" required rows="8" maxlength="5000" asp-for="@Model.Aviso.Conteudo"></textarea>
+                    <small class="form-text">Máximo 5000 caracteres</small>
+                    <span asp-validation-for="Aviso.Conteudo" class="invalid-feedback"></span>
+                </div>
+
+                <div style="display: flex; gap: 12px;">
+                    <button type="submit" class="btn btn-primary">SALVAR</button>
+                    <a href="/Admin/Avisos/Index" class="btn btn-outline-light">CANCELAR</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+@page
+@model AvisosDeleteModel
+@{
+    ViewData["Title"] = "Deletar Aviso";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">DELETAR AVISO</h1>
+        <p>Remover aviso permanentemente</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="form-panel" style="max-width: 600px;">
+            @if (Model.Aviso != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <strong>Atenção!</strong> Esta ação é irreversível. Tem certeza que deseja deletar este aviso?
+                </div>
+
+                <div style="background: var(--color-surface); padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                    <h4>@Model.Aviso.Titulo</h4>
+                    <p>@Model.Aviso.Conteudo</p>
+                    <small>Criado em @Model.Aviso.DataCriacao.ToString("dd/MM/yyyy HH:mm")</small>
+                </div>
+
+                <form method="post" style="display: flex; gap: 12px;">
+                    <button type="submit" class="btn btn-danger">CONFIRMAR DELEÇÃO</button>
+                    <a href="/Admin/Avisos/Index" class="btn btn-outline-light">CANCELAR</a>
+                </form>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Aviso não encontrado.
+                    <a href="/Admin/Avisos/Index">Voltar para lista</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

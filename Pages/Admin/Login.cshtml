@@ -1,0 +1,44 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login Admin";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">ACESSO ADMINISTRATIVO</h1>
+        <p>Área restrita para gerenciamento do portal</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="form-panel" style="max-width: 500px;">
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @Model.ErrorMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control @(ModelState["Email"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                           id="email" name="email" required asp-for="@Model.Email">
+                    <span asp-validation-for="Email" class="invalid-feedback"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control @(ModelState["Senha"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                           id="senha" name="senha" required asp-for="@Model.Senha">
+                    <span asp-validation-for="Senha" class="invalid-feedback"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">ENTRAR</button>
+            </form>
+        </div>
+    </div>
+</section>

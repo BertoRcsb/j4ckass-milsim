@@ -14,79 +14,28 @@
 
 <section class="content-section">
     <div class="app-container">
-        <div class="updates-timeline">
-            <article class="update-card update-major">
-                <div class="update-header">
-                    <h2>v1.0.0 - Lançamento oficial do portal</h2>
-                    <span class="update-version">v1.0.0</span>
-                </div>
-                <time class="update-date">29 de julho de 2026</time>
-                <ul class="update-features">
-                    <li>Novo portal web centralizado para a comunidade</li>
-                    <li>Página de regras com código de conduta</li>
-                    <li>Sistema de avisos e comunicados</li>
-                    <li>Página de recrutamento integrada</li>
-                    <li>Informações sobre o grupo e valores</li>
-                    <li>Design responsivo para mobile e desktop</li>
-                </ul>
-            </article>
-
-            <article class="update-card">
-                <div class="update-header">
-                    <h2>Melhorias de design - Theme e acessibilidade</h2>
-                    <span class="update-version">em desenvolvimento</span>
-                </div>
-                <time class="update-date">próximas semanas</time>
-                <ul class="update-features">
-                    <li>Dark mode para melhor experiência noturna</li>
-                    <li>Melhorias de contraste e acessibilidade</li>
-                    <li>Otimização de performance</li>
-                    <li>Suporte a temas personalizados</li>
-                </ul>
-            </article>
-
-            <article class="update-card">
-                <div class="update-header">
-                    <h2>Sistema administrativo - CMS integrado</h2>
-                    <span class="update-version">em planejamento</span>
-                </div>
-                <time class="update-date">próximo mês</time>
-                <ul class="update-features">
-                    <li>Painel de administração para gerenciar conteúdo</li>
-                    <li>Criação e edição de regras, avisos e atualizações</li>
-                    <li>Autenticação segura para moderadores</li>
-                    <li>Histórico de mudanças e versionamento</li>
-                </ul>
-            </article>
-
-            <article class="update-card">
-                <div class="update-header">
-                    <h2>Integração com Discord</h2>
-                    <span class="update-version">em planejamento</span>
-                </div>
-                <time class="update-date">futuro</time>
-                <ul class="update-features">
-                    <li>Sincronização automática de eventos</li>
-                    <li>Sistema de notificações para membros</li>
-                    <li>Autenticação via Discord</li>
-                    <li>Exibição dinâmica de status do servidor</li>
-                </ul>
-            </article>
-
-            <article class="update-card">
-                <div class="update-header">
-                    <h2>Galeria de operações e mídia</h2>
-                    <span class="update-version">em planejamento</span>
-                </div>
-                <time class="update-date">futuro</time>
-                <ul class="update-features">
-                    <li>Galeria de imagens e vídeos de operações</li>
-                    <li>Biblioteca de AAR (After Action Reports)</li>
-                    <li>Destaque de momentos memoráveis do grupo</li>
-                    <li>Sistema de comentários e reações</li>
-                </ul>
-            </article>
-        </div>
+        @if (Model.Atualizacoes.Any())
+        {
+            <div class="updates-timeline">
+                @foreach (var atualizacao in Model.Atualizacoes)
+                {
+                    <article class="update-card">
+                        <div class="update-header">
+                            <h2>@atualizacao.Versao</h2>
+                            <span class="update-version">@atualizacao.Versao</span>
+                        </div>
+                        <time class="update-date">@atualizacao.DataCriacao.ToString("dd/MM/yyyy")</time>
+                        <p>@atualizacao.Conteudo</p>
+                    </article>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" style="padding: 24px; border-radius: 8px;">
+                <p>Nenhuma atualização publicada no momento. Volte em breve!</p>
+            </div>
+        }
     </div>
 </section>
 

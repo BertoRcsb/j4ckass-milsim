@@ -1,19 +1,21 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GrupoArmaReforger.Application.DTOs;
 using GrupoArmaReforger.Application.Services;
 
-namespace GrupoArmaReforger.Pages;
+namespace GrupoArmaReforger.Pages.Admin.Avisos;
 
 /// <summary>
-/// PageModel para página de Avisos
+/// PageModel para listar avisos
 /// </summary>
-public class AvisosModel : PageModel
+[Authorize]
+public class AvisosIndexModel : PageModel
 {
     private readonly AvisoService _avisoService;
 
     public IEnumerable<AvisoExibicaoDTO> Avisos { get; set; } = Enumerable.Empty<AvisoExibicaoDTO>();
 
-    public AvisosModel(AvisoService avisoService)
+    public AvisosIndexModel(AvisoService avisoService)
     {
         _avisoService = avisoService;
     }

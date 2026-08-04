@@ -14,55 +14,28 @@
 
 <section class="content-section">
     <div class="app-container">
-        <div class="announcements-list">
-            <article class="announcement-card announcement-highlight">
-                <div class="announcement-meta">
-                    <span class="announcement-date">29 de Julho de 2026</span>
-                    <span class="announcement-badge badge-important">Importante</span>
-                </div>
-                <h2>Bem-vindo ao novo portal J4CKASS!</h2>
-                <p>Estamos animados em apresentar o novo portal da comunidade. Aqui você encontrará regras, avisos de operações, atualizações e informações sobre recrutamento — tudo em um só lugar.</p>
-                <p>Este é apenas o começo. O portal continuará evoluindo com novas funcionalidades e conteúdo.</p>
-            </article>
-
-            <article class="announcement-card">
-                <div class="announcement-meta">
-                    <span class="announcement-date">Domingos às 20h30</span>
-                    <span class="announcement-badge badge-event">Operação</span>
-                </div>
-                <h2>Operação principal semanal</h2>
-                <p>Briefing semanal toda domingo às 20h30. Chegar com antecedência no Discord para checagem de mods, radio e formação das equipes.</p>
-                <p><strong>Importante:</strong> Confirme presença no Discord com antecedência!</p>
-            </article>
-
-            <article class="announcement-card">
-                <div class="announcement-meta">
-                    <span class="announcement-date">Terças e quintas</span>
-                    <span class="announcement-badge badge-info">Treino</span>
-                </div>
-                <h2>Sessões de treino</h2>
-                <p>Treinos focados em comunicação, movimentação em dupla e reorganização após contato. Aberto para todos os membros.</p>
-            </article>
-
-            <article class="announcement-card">
-                <div class="announcement-meta">
-                    <span class="announcement-date">Permanente</span>
-                    <span class="announcement-badge badge-update">Servidor</span>
-                </div>
-                <h2>Servidor multiplayer 24/7</h2>
-                <p>Servidor aberto permanentemente para treinos, testes de loadout e diversão casual. Verifique a lista de mods no canal #servidores do Discord antes de entrar.</p>
-            </article>
-
-            <article class="announcement-card">
-                <div class="announcement-meta">
-                    <span class="announcement-date">Recentemente</span>
-                    <span class="announcement-badge badge-info">Atualização</span>
-                </div>
-                <h2>Recrutamento aberto</h2>
-                <p>Se você está interessado em se juntar ao J4CKASS MILSIM, verifique a página de recrutamento. Buscamos jogadores comprometidos e comunicativos.</p>
-                <a asp-page="/Recrutamento" class="link-arrow">Saiba mais sobre recrutamento</a>
-            </article>
-        </div>
+        @if (Model.Avisos.Any())
+        {
+            <div class="announcements-list">
+                @foreach (var aviso in Model.Avisos)
+                {
+                    <article class="announcement-card">
+                        <div class="announcement-meta">
+                            <span class="announcement-date">@aviso.DataCriacao.ToString("dd/MM/yyyy")</span>
+                            <span class="announcement-badge badge-important">Aviso</span>
+                        </div>
+                        <h2>@aviso.Titulo</h2>
+                        <p>@aviso.Conteudo</p>
+                    </article>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" style="padding: 24px; border-radius: 8px;">
+                <p>Nenhum aviso publicado no momento. Volte em breve para atualizações!</p>
+            </div>
+        }
     </div>
 </section>
 

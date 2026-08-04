@@ -1,0 +1,93 @@
+@page
+@model AvisosIndexModel
+@{
+    ViewData["Title"] = "Gerenciar Avisos";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">AVISOS</h1>
+        <p>Gerenciar avisos da comunidade</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div style="margin-bottom: 24px;">
+            <a href="/Admin/Avisos/Create" class="btn btn-primary">+ NOVO AVISO</a>
+            <a href="/Admin/Dashboard" class="btn btn-outline-light">VOLTAR</a>
+        </div>
+
+        @if (Model.Avisos.Any())
+        {
+            <div style="overflow-x: auto;">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Criado em</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var aviso in Model.Avisos)
+                        {
+                            <tr>
+                                <td>@aviso.Titulo</td>
+                                <td>@aviso.DataCriacao.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    <a href="/Admin/Avisos/Edit?id=@aviso.Id" class="btn btn-sm btn-warning">Editar</a>
+                                    <a href="/Admin/Avisos/Delete?id=@aviso.Id" class="btn btn-sm btn-danger">Deletar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                Nenhum aviso cadastrado. <a href="/Admin/Avisos/Create">Criar o primeiro aviso</a>
+            </div>
+        }
+    </div>
+</section>
+
+<style>
+    .table {
+        background: var(--color-surface);
+        border-color: var(--color-border);
+    }
+
+    .table th {
+        border-color: var(--color-border);
+        background: var(--color-surface-strong);
+    }
+
+    .table td {
+        border-color: var(--color-border);
+        vertical-align: middle;
+    }
+
+    .btn-warning {
+        background: #d4a574;
+        border-color: #d4a574;
+        color: #000;
+    }
+
+    .btn-warning:hover {
+        background: #e0b588;
+        border-color: #e0b588;
+    }
+
+    .btn-danger {
+        background: #c1311a;
+        border-color: #c1311a;
+    }
+
+    .btn-danger:hover {
+        background: #e84432;
+        border-color: #e84432;
+    }
+</style>

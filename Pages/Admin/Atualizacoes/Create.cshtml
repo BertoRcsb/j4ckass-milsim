@@ -1,0 +1,57 @@
+@page
+@model AtualizacoesCreateModel
+@{
+    ViewData["Title"] = "Nova Atualização";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">CRIAR ATUALIZAÇÃO</h1>
+        <p>Publicar uma nova versão do projeto</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="form-panel">
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @Model.SuccessMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @Model.ErrorMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label for="versao" class="form-label">Versão *</label>
+                    <input type="text" class="form-control @(ModelState["Atualizacao.Versao"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                           id="versao" name="atualizacao.versao" required maxlength="50" placeholder="Ex: v1.0.0" asp-for="@Model.Atualizacao.Versao">
+                    <small class="form-text">Máximo 50 caracteres</small>
+                    <span asp-validation-for="Atualizacao.Versao" class="invalid-feedback"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="conteudo" class="form-label">Conteúdo *</label>
+                    <textarea class="form-control @(ModelState["Atualizacao.Conteudo"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                              id="conteudo" name="atualizacao.conteudo" required rows="8" maxlength="5000" asp-for="@Model.Atualizacao.Conteudo"></textarea>
+                    <small class="form-text">Máximo 5000 caracteres. Descreva as principais mudanças.</small>
+                    <span asp-validation-for="Atualizacao.Conteudo" class="invalid-feedback"></span>
+                </div>
+
+                <div style="display: flex; gap: 12px;">
+                    <button type="submit" class="btn btn-primary">SALVAR</button>
+                    <a href="/Admin/Atualizacoes/Index" class="btn btn-outline-light">CANCELAR</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

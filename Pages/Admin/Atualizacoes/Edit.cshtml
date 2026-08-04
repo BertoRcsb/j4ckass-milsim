@@ -1,0 +1,61 @@
+@page
+@model AtualizacoesEditModel
+@{
+    ViewData["Title"] = "Editar Atualização";
+}
+
+<div class="page-hero page-hero-admin">
+    <div class="app-container">
+        <h1 class="page-title">EDITAR ATUALIZAÇÃO</h1>
+        <p>Modificar versão existente</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="app-container">
+        <div class="form-panel">
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @Model.ErrorMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            @if (Model.Atualizacao != null)
+            {
+                <form method="post">
+                    <input type="hidden" name="id" value="@Model.AtualizacaoId" />
+
+                    <div class="mb-3">
+                        <label for="versao" class="form-label">Versão *</label>
+                        <input type="text" class="form-control @(ModelState["Atualizacao.Versao"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                               id="versao" name="atualizacao.versao" required maxlength="50" asp-for="@Model.Atualizacao.Versao">
+                        <small class="form-text">Máximo 50 caracteres</small>
+                        <span asp-validation-for="Atualizacao.Versao" class="invalid-feedback"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="conteudo" class="form-label">Conteúdo *</label>
+                        <textarea class="form-control @(ModelState["Atualizacao.Conteudo"]?.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ? "is-invalid" : "")"
+                                  id="conteudo" name="atualizacao.conteudo" required rows="8" maxlength="5000" asp-for="@Model.Atualizacao.Conteudo"></textarea>
+                        <small class="form-text">Máximo 5000 caracteres</small>
+                        <span asp-validation-for="Atualizacao.Conteudo" class="invalid-feedback"></span>
+                    </div>
+
+                    <div style="display: flex; gap: 12px;">
+                        <button type="submit" class="btn btn-primary">SALVAR</button>
+                        <a href="/Admin/Atualizacoes/Index" class="btn btn-outline-light">CANCELAR</a>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Atualização não encontrada.
+                    <a href="/Admin/Atualizacoes/Index">Voltar para lista</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

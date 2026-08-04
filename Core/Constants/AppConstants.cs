@@ -47,6 +47,59 @@ public static class AppConstants
     }
 
     /// <summary>
+    /// Mensagens de Autenticação e Admin
+    /// </summary>
+    public static class Admin
+    {
+        public const string LoginRequired = "Autenticação necessária para acessar esta página.";
+        public const string LoginSucesso = "Login realizado com sucesso!";
+        public const string LoginFalha = "Email ou senha inválidos.";
+        public const string AcessoNegado = "Você não tem permissão para acessar este recurso.";
+        public const string LogoutSucesso = "Logout realizado com sucesso.";
+        public const string ErroProcessamento = "Erro ao processar operação. Tente novamente mais tarde.";
+
+        public static class Aviso
+        {
+            public const string CriacaoSucesso = "Aviso criado com sucesso.";
+            public const string EdicaoSucesso = "Aviso atualizado com sucesso.";
+            public const string DelecaoSucesso = "Aviso removido com sucesso.";
+            public const string ErroProcessamento = "Erro ao processar aviso. Tente novamente.";
+
+            public static class Validacao
+            {
+                public const string TituloObrigatorio = "Título é obrigatório.";
+                public const string ConteudoObrigatorio = "Conteúdo é obrigatório.";
+            }
+        }
+
+        public static class Atualizacao
+        {
+            public const string CriacaoSucesso = "Atualização criada com sucesso.";
+            public const string EdicaoSucesso = "Atualização atualizada com sucesso.";
+            public const string DelecaoSucesso = "Atualização removida com sucesso.";
+            public const string ErroProcessamento = "Erro ao processar atualização. Tente novamente.";
+
+            public static class Validacao
+            {
+                public const string VersaoObrigatoria = "Versão é obrigatória.";
+                public const string ConteudoObrigatorio = "Conteúdo é obrigatório.";
+            }
+        }
+
+        public static class AdminUser
+        {
+            public const string EmailJaCadastrado = "Este email já foi cadastrado como administrador.";
+
+            public static class Validacao
+            {
+                public const string EmailObrigatorio = "Email é obrigatório.";
+                public const string SenhaObrigatoria = "Senha é obrigatória.";
+                public const string SenhaFraca = "Senha deve ter no mínimo 8 caracteres.";
+            }
+        }
+    }
+
+    /// <summary>
     /// Validações
     /// </summary>
     public static class Validation
@@ -55,6 +108,13 @@ public static class AppConstants
         public const int MaxEmailLength = 100;
         public const int MaxSteamIdLength = 50;
         public const int MaxPsnLength = 50;
+
+        // Admin/Avisos
+        public const int MaxTituloLength = 200;
+        public const int MaxConteudoLength = 5000;
+        public const int MaxVersaoLength = 50;
+        public const int MinSenhaLength = 8;
+        public const int MaxSenhaLength = 128;
 
         public const string EmailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
     }
