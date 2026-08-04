@@ -58,7 +58,7 @@ public class LoginModel : PageModel
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier, adminId.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, adminId.ToString() ?? "0"),
             new Claim(ClaimTypes.Email, email),
             new Claim(ClaimTypes.Role, "Admin")
         };
