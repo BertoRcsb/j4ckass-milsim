@@ -50,8 +50,14 @@ public class LoginModel : PageModel
             return Page();
         }
 
-        await AutenticarCookieAsync(resultado.AdminId.Value, Email);
-        return RedirectToPage("/Admin/Dashboard");
+        if (resultado.AdminId.HasValue)
+        {
+            await AutenticarCookieAsync(resultado.AdminId.Value, Email);
+            return RedirectToPage("/Admin/Dashboard");
+        }
+
+        ErrorMessage = "Erro ao autenticar. Tente novamente.";
+        return Page();
     }
 
     private async Task AutenticarCookieAsync(int adminId, string email)

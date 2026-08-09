@@ -31,3 +31,4 @@ Thumbs.db
 *.userosscache
 *.sln.docstates
 *.bak
+publish/
