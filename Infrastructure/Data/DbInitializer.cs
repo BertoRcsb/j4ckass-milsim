@@ -20,9 +20,14 @@ public static class DbInitializer
         if (context.AdminUsers.Any())
             return;
 
-        // Criar admin padrão (credenciais devem ser alteradas em produção)
-        var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? "Admin@12345";
-        var adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL") ?? "admin@j4ckass.local";
+        // Criar admin padrão (credenciais devem ser definidas via variáveis de ambiente)
+        var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
+        var adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
+        if (string.IsNullOrWhiteSpace(adminPassword) || string.IsNullOrWhiteSpace(adminEmail))
+        {
+            throw new InvalidOperationException(
+                "ADMIN_EMAIL e ADMIN_PASSWORD devem ser definidos via variáveis de ambiente antes do primeiro start.");
+        }
 
         var admin = new AdminUser
         {

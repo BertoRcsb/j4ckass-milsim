@@ -14,13 +14,13 @@
   --font-mono: 'Share Tech Mono', monospace;
   --font-orbitron: 'Orbitron', sans-serif;
   --image-fallback: url("../assets/backgrounds/tactical-background.svg");
-  --image-home: url("../assets/backgrounds/hero-soldiers.jpg");
-  --image-rules: url("../assets/backgrounds/rules-soldiers.jpg");
-  --image-notices: url("../assets/backgrounds/notices-soldiers.jpg");
-  --image-updates: url("../assets/backgrounds/updates-soldiers.jpg");
-  --image-recruitment: url("../assets/backgrounds/recruitment-soldiers.jpg");
-  --image-about: url("../assets/backgrounds/about-soldiers.jpg");
-  --image-admin: url("../assets/backgrounds/admin-soldiers.jpg");
+  --image-home: url("../assets/wallpapers/operations-hero.jpg");
+  --image-rules: url("../assets/backgrounds/tactical-background.svg");
+  --image-notices: url("../assets/backgrounds/tactical-background.svg");
+  --image-updates: url("../assets/backgrounds/tactical-background.svg");
+  --image-recruitment: url("../assets/backgrounds/tactical-background.svg");
+  --image-about: url("../assets/backgrounds/tactical-background.svg");
+  --image-admin: url("../assets/backgrounds/tactical-background.svg");
 }
 
 * {

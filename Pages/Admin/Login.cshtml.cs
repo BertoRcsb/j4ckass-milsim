@@ -11,7 +11,6 @@ namespace GrupoArmaReforger.Pages.Admin;
 /// <summary>
 /// PageModel para autenticação de administradores
 /// </summary>
-[IgnoreAntiforgeryToken]
 public class LoginModel : PageModel
 {
     private readonly IAdminService _adminService;

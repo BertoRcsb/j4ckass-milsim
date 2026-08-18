@@ -136,8 +136,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            return await _repository.ObterPorEmailAsync("admin@j4ckass.local") != null ||
-                   await _repository.ObterPorIdAsync(1) != null;
+            return await _repository.ObterPorIdAsync(1) != null;
         }
         catch
         {

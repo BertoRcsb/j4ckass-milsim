@@ -1,0 +1,12 @@
+bin/
+obj/
+publish/
+out/
+.git/
+.github/
+data/
+prototype/
+**/*.user
+.env
+.vs/
+.vscode/

@@ -18,11 +18,4 @@ public interface IAssetService
     /// <param name="wallpaperName">Nome do arquivo do wallpaper</param>
     /// <returns>URL relativa do wallpaper</returns>
     string GetWallpaperUrl(string wallpaperName);
-
-    /// <summary>
-    /// Obtém a URL de um background para seção hero
-    /// </summary>
-    /// <param name="heroName">Nome do arquivo do hero</param>
-    /// <returns>URL relativa do hero</returns>
-    string GetHeroBackgroundUrl(string heroName);
 }

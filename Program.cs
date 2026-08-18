@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using GrupoArmaReforger.Infrastructure.Data;
 using GrupoArmaReforger.Infrastructure.Repositories;
 using GrupoArmaReforger.Core.Interfaces;
@@ -17,6 +19,15 @@ using GrupoArmaReforger.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar ForwardedHeaders para proxy (Caddy)
+builder.Services.AddHttpLogging(options => { });
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 // Adicionar autenticação com cookies
 builder.Services.AddAuthentication("AdminScheme")
     .AddCookie("AdminScheme", options =>
@@ -26,6 +37,9 @@ builder.Services.AddAuthentication("AdminScheme")
         options.AccessDeniedPath = "/Admin/AccessDenied";
         options.ExpireTimeSpan = TimeSpan.FromHours(24);
         options.SlidingExpiration = true;
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.SameSite = SameSiteMode.Lax;
     });
 
 // Adicionar autorização
@@ -39,8 +53,10 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddRazorPages();
 
 // Configurar banco de dados (SQLite)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? "Data Source=app.db";
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=app.db"));
+    options.UseSqlite(connectionString));
 
 // Registrar serviços da aplicação (Dependency Injection)
 RegisterApplicationServices(builder.Services);
@@ -88,6 +104,9 @@ static void RegisterApplicationServices(IServiceCollection services)
 /// </summary>
 static void ConfigureHttpPipeline(WebApplication app)
 {
+    // ForwardedHeaders deve ser o primeiro middleware
+    app.UseForwardedHeaders();
+
     // Tratamento de erros
     if (!app.Environment.IsDevelopment())
     {
@@ -96,7 +115,6 @@ static void ConfigureHttpPipeline(WebApplication app)
     }
 
     // Middleware de segurança e roteamento
-    app.UseHttpsRedirection();
     app.UseRouting();
     app.UseAuthentication();
     app.UseAuthorization();

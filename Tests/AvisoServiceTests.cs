@@ -1,4 +1,5 @@
 using Moq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GrupoArmaReforger.Core.Domain;
 using GrupoArmaReforger.Core.Interfaces;
 using GrupoArmaReforger.Application.Services;

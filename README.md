@@ -191,18 +191,34 @@ public class RecrutamentoServiceTests
 
 ## 🚀 Deploy
 
-### Publicar
+### Publicar Localmente
 
 ```bash
 dotnet publish -c Release -o ./publish
 ```
 
+### Deploy em Produção (Hostinger VPS + Docker)
+
+Veja [HOSTINGER_DEPLOY.md](./HOSTINGER_DEPLOY.md) para instruções completas:
+
+- VPS Ubuntu 24.04 (Hostinger, pago via Pix)
+- Docker + Docker Compose
+- Caddy para HTTPS automático (Let's Encrypt)
+- Subdomínio grátis via DuckDNS
+
+**Resumo rápido:**
+1. Contratar VPS Ubuntu 24.04
+2. SSH para o servidor e instalar Docker
+3. Clonar repositório
+4. Copiar `.env.example` para `.env` e preencher credenciais
+5. Rodar `docker compose up -d --build`
+
 ### Requisitos em Produção
 
-- HTTPS ativo
-- SQLite com backup
-- Logs sem dados sensíveis
-- Secrets em variáveis de ambiente
+- HTTPS ativo (Caddy gerencia certificados Let's Encrypt)
+- SQLite com backup (banco em volume persistente `./data`)
+- Logs estruturados, sem dados sensíveis
+- Secrets via variáveis de ambiente (ADMIN_EMAIL, ADMIN_PASSWORD, SITE_DOMAIN)
 
 ## 📖 Clean Code Aplicado
 

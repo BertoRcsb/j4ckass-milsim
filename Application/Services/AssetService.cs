@@ -10,7 +10,6 @@ public class AssetService : IAssetService
 {
     private const string LogosPath = "/assets/logos";
     private const string WallpapersPath = "/assets/wallpapers";
-    private const string HerosPath = "/assets/heroes";
 
     /// <summary>
     /// Obtém a URL relativa de uma logo
@@ -32,17 +31,6 @@ public class AssetService : IAssetService
     {
         ValidarNomeArquivo(wallpaperName);
         return ConstructUrl(WallpapersPath, wallpaperName);
-    }
-
-    /// <summary>
-    /// Obtém a URL relativa de um hero background
-    /// </summary>
-    /// <param name="heroName">Nome do arquivo (ex: "tactical-background.svg")</param>
-    /// <returns>URL relativa completa do hero</returns>
-    public string GetHeroBackgroundUrl(string heroName)
-    {
-        ValidarNomeArquivo(heroName);
-        return ConstructUrl(HerosPath, heroName);
     }
 
     /// <summary>
