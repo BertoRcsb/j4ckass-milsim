@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J4CKASS MILSIM - Home</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #080b09;
+            --surface: #111611;
+            --primary: #47663f;
+            --accent: #d7e7c3;
+            --text: #f4f4f0;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background-color: rgba(8, 11, 9, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-admin {
+            color: #ff6b6b !important;
+            font-weight: bold;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
+            padding: 100px 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-content {
+            max-width: 700px;
+        }
+        .eyebrow {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 1rem 0;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        .slogan {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: bold;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            color: rgba(255,255,255,0.9);
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.7rem 2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #6f8c5e;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--bg);
+            transform: translateY(-2px);
+        }
+        .info-section {
+            background-color: var(--surface);
+            padding: 3rem 2rem;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .info-item {
+            padding: 2rem;
+            background-color: rgba(255,255,255,0.05);
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .info-item:hover {
+            background-color: rgba(71, 102, 63, 0.2);
+            transform: translateY(-5px);
+        }
+        .info-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .info-item strong {
+            display: block;
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+        }
+        .info-item p {
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+        }
+        .footer {
+            background-color: var(--surface);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+        .coming-soon {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 4px;
+            margin-top: 2rem;
+            color: #ff6b6b;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .hero { padding: 60px 1rem; }
+            .nav-links { flex-direction: column; gap: 1rem; font-size: 0.9rem; }
+            .navbar { flex-direction: column; gap: 1rem; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <span class="navbar-brand">🎖️ J4CKASS MILSIM</span>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Regras</a>
+        <a href="#">Avisos</a>
+        <a href="#">Atualizações</a>
+        <a href="#">Recrutamento</a>
+        <a href="#">Sobre</a>
+        <a href="#" class="nav-admin">Admin</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">Comunidade brasileira de Arma Reforger</p>
+        <h1>J4CKASS MILSIM</h1>
+        <p class="slogan">"MUITA PROSA, POUCA MIRA"</p>
+        <p class="description">
+            Operações organizadas, amizade no rádio e presença tática no Arma Reforger.<br>
+            O portal centraliza regras, avisos, recrutamento e atualizações do grupo.
+        </p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="https://discord.gg/j4ckass" target="_blank">Entrar no Discord</a>
+            <a class="btn btn-outline" href="#">Ver Regras</a>
+        </div>
+        <div class="coming-soon">
+            ⚡ Site completo chegando em breve com Admin, CRUD dinâmico e mais!
+        </div>
+    </div>
+</section>
+
+<!-- INFO -->
+<section class="info-section">
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="info-label">⚔️ Operações</span>
+            <strong>Organização tática</strong>
+            <p>Base para comunicados, treinamentos e eventos da comunidade.</p>
+        </div>
+        <div class="info-item">
+            <span class="info-label">📋 Conduta</span>
+            <strong>Regras claras</strong>
+            <p>Espaço para centralizar regras, padrões e orientações do grupo.</p>
+        </div>
+        <div class="info-item">
+            <span class="info-label">📈 Evolução</span>
+            <strong>Portal em crescimento</strong>
+            <p>Projeto preparado para evoluir com banco de dados, admin e publicação simples.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2026 - J4CKASS MILSIM | Muita prosa, pouca mira. 🎖️</p>
+</footer>
+
+</body>
+</html>
